@@ -705,7 +705,7 @@ Aquí tienes mi lista de comandos
                 serverMessageId: -1,
             },
             externalAdReply: {
-                title: 'ׄ❀ׅᮢ໋۬۟   ׁ ᮫᩠𝗥ᥙ᜔᪲𝖻ֹ𝘺 𝐇֢ᩚᨵ̷̸ׁׅׅ𝗌𝗁𝗂ᮬ𝗇֟፝͡𝗈̷̸  ꫶֡ᰵ࡙🌸̵໋ׄᮬ͜✿֪',
+                title: '🍡 𖤐 K A N N A ☁ K A M U I 𖤐 🍡',
                 body: dev,
                 thumbnail: icons,
                 sourceUrl: redes,
