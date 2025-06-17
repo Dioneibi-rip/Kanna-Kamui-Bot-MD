@@ -701,7 +701,7 @@ Aquí tienes mi lista de comandos
             forwardingScore: 999,
             forwardedNewsletterMessageInfo: {
                 newsletterJid: '120363335626706839@newsletter',
-                newsletterName: '⏤͟͞ू⃪፝͜⁞⟡『 𝐓͢ᴇ𝙖፝ᴍ⃨ 𝘾𝒉꯭𝐚𝑛𝑛𝒆𝑙: 𝑹ᴜ⃜ɓ𝑦-𝑯ᴏ𝒔𝑯𝙞꯭𝑛𝒐 』࿐⟡',
+                newsletterName: '𖥔꒷꒦『 𓆩🌸 𝐊𝐚𝐧𝐧𝐚 𝐊𝐚𝐦𝐮𝐢 - 𝑪𝒉𝒂𝒏𝒏𝒆𝒍 𝑶𝒇𝒇𝒊𝒄𝒊𝒂𝒍 🌸𓆪 』꒦꒷𖥔',
                 serverMessageId: -1,
             },
             externalAdReply: {
