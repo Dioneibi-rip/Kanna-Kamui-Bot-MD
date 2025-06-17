@@ -688,7 +688,7 @@ Aquí tienes mi lista de comandos
         }
     });
 
-    await m.react('💖');
+    await m.react('');
 
     // Enviar el video GIF con el texto en un solo mensaje
     await conn.sendMessage(m.chat, { 
@@ -700,7 +700,7 @@ Aquí tienes mi lista de comandos
             isForwarded: true,
             forwardingScore: 999,
             forwardedNewsletterMessageInfo: {
-                newsletterJid: '120363335626706839@newsletter',
+                newsletterJid: '120363402780749345@newsletter',
                 newsletterName: '𖥔꒷꒦『 𓆩🌸 𝐊𝐚𝐧𝐧𝐚 𝐊𝐚𝐦𝐮𝐢 - 𝑪𝒉𝒂𝒏𝒏𝒆𝒍 𝑶𝒇𝒇𝒊𝒄𝒊𝒂𝒍 🌸𓆪 』꒦꒷𖥔',
                 serverMessageId: -1,
             },
