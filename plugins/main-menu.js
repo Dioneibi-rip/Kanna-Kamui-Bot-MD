@@ -705,7 +705,7 @@ Aquí tienes mi lista de comandos
                 serverMessageId: -1,
             },
             externalAdReply: {
-                title: '🍡 𖤐 K A N N A ☁ K A M U I 𖤐 🍡',
+                title: '꒰🎀⸝⫿͟͞𖦹𝗞𝗔𝗡𝗡𝗔 𝗞𝗔𝗠𝗨𝗜𖦹⫿⸜🎀꒱',
                 body: dev,
                 thumbnail: icons,
                 sourceUrl: redes,
