@@ -681,7 +681,7 @@ Aquí tienes mi lista de comandos
             isForwarded: true, 
             externalAdReply: {
                 title: packname,
-                body: '¡explora la gran variedad de comandos!',
+                body: '↳ 𝘿𝙧𝙖𝙜𝙤𝙣 𝙡𝙤𝙡𝙞 𝙙𝙚 𝙢𝙤𝙘𝙝𝙞𝙨 🍡',
                 sourceUrl: redes,
                 thumbnail: icons 
             }
