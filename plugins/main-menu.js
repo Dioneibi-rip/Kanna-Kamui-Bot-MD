@@ -35,7 +35,7 @@ let handler = async (m, { conn, args }) => {
     const randomGif = gifVideos[Math.floor(Math.random() * gifVideos.length)];
 
 
-    let txt = '
+    let txt = `
 ☆༝━━━━━━━━━━━━━━━━━━༝☆｡  
  ┎┈┈┈┈┈┈┈୨ꕥ୧┈┈┈┈┈┈┈┒  
     ⊹₊˚૮₍ ⸝⸝⸝ᴋ⸝⸝⸝ ₎ა ⭑ 
