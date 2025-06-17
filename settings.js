@@ -47,7 +47,7 @@ global.RubyJadibts = true
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.packname = '✦⃟⛧┋ ➪ _ＲＵＢＹ ⛧ ＨＯＳＨＩＮＯ_ 🌸┋⃟✧'
+global.packname = '𐐪𐑂 ̀𝑲͢͞𝒂𝒏𝒏⃜𝒂̸ ⟣ 𝑲𝒂𝒎̸𝒖𝒊 ⃟ᯓᡣ𐭩'
 global.botname = '🕊️⃟⋆≛⃝  𝐑᪶𝐮𝐛𝐲 𝐇⃨𝐨𝐬𝐡𝐢𝐧𝐨⃛ 🔥⃝ℓє'
 global.wm = '‧˚꒰🍷꒱ ፝͜⁞R͢ᴜʙʏ-H͢ᴼ꯭s፝֟ʜɪɴᴏ-𝘉𝘰𝘵-𝑴𝑫✰⃔⃝🦋'
 global.author = 'Made By 𐔌Dioneibi-rip ͡꒱ ۫'
