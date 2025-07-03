@@ -2,7 +2,7 @@ import yts from "yt-search";
 import fetch from "node-fetch";
 
 const SIZE_LIMIT_MB = 100;
-const newsletterJid = '';
+const newsletterJid = '120363402780749345@newsletter';
 const newsletterName = '⏤͟͞ू⃪፝͜⁞⟡『 Kanna-Kamui-Channel 』࿐⟡';
 
 const handler = async (m, { conn, text, command }) => {
