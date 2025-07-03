@@ -1,10 +1,11 @@
-import fetch from 'node-fetch';
-import yts from 'yt-search';
+import yts from "yt-search";
+import fetch from "node-fetch";
 
-const newsletterJid  = '120363335626706839@newsletter';
-const newsletterName = '⏤͟͞ू⃪፝͜⁞⟡『 Ruby-Hoshino-Channel 』࿐⟡';
+const SIZE_LIMIT_MB = 100;
+const newsletterJid = '';
+const newsletterName = '⏤͟͞ू⃪፝͜⁞⟡『 Kanna-Kamui-Channel 』࿐⟡';
 
-var handler = async (m, { conn, args, usedPrefix, command }) => {
+const handler = async (m, { conn, text, command }) => {
   const name = conn.getName(m.sender);
   const contextInfo = {
     mentionedJid: [m.sender],
@@ -17,7 +18,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
     },
     externalAdReply: {
       title: packname,
-      body: dev,
+      body: "🎧 Kanna Kamui Downloader",
       thumbnail: icons,
       sourceUrl: redes,
       mediaType: 1,
@@ -25,103 +26,96 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
     }
   };
 
-
-  if (args[0] === 'audio' || args[0] === 'video') {
-    const mode = args[0];                  
-    const url  = args.slice(1).join(' ');   
-    if (!url) return conn.reply(m.chat, `⚠️ Uso: ${usedPrefix}play ${mode} <url>`, m, { contextInfo });
-
-    
-    const apiUrl = mode === 'video'
-      ? `https://api.vreden.my.id/api/ytplaymp4?query=${encodeURIComponent(url)}`
-      : `https://api.vreden.my.id/api/ytplaymp3?query=${encodeURIComponent(url)}`;
-
-   
-    await conn.reply(m.chat, `⏳ *Procesando ${mode} para ti, ${name}-chan...*`, m, { contextInfo });
-
-    try {
-      const res  = await fetch(apiUrl);
-      const jsn  = await res.json();
-      const meta = jsn.result.metadata;
-      const dl   = jsn.result.download;
-
-      if (!jsn.status === 200 || !dl?.url) {
-        throw new Error('No se obtuvo enlace de descarga.');
-      }
-
-      const dataBuffer = await (await fetch(dl.url)).buffer();
-      const title      = meta.title;
-      const caption    = mode === 'video'
-        ? `📹 *${title}*\n🎞 Calidad: ${dl.quality}`
-        : `🎵 *${title}*\n🔊 Calidad: ${dl.quality}`;
-
-      await conn.sendMessage(
-        m.chat,
-        mode === 'video'
-          ? { video: dataBuffer, mimetype: 'video/mp4', fileName: dl.filename, caption }
-          : { audio: dataBuffer, mimetype: 'audio/mpeg', fileName: dl.filename, ptt: false, caption },
-        { quoted: m, contextInfo }
-      );
-    } catch (e) {
-      console.error(e);
-      await conn.reply(m.chat, `❌ Oops, ocurrió un error: ${e.message}`, m, { contextInfo });
-    }
-    return;
-  }
-
-
-  if (!args[0]) {
+  if (!text) {
     return conn.reply(m.chat,
-      `🌸 *Konnichiwa ${name}-chan!* ¿Qué quieres escuchar o ver? 🎶📹\n\n` +
-      `Ejemplo:\n${usedPrefix}play Goku conoce a Bills`,
-      m, { contextInfo }
-    );
+      `🌸 *Konnichiwa ${name}-chan~!* Necesito que me digas el nombre de un video o me pegues el link de YouTube 💕\n\n✨ *Ejemplos:*\n.play Shinzou wo Sasageyo\n.play https://youtu.be/xxx`,
+      m, { contextInfo });
   }
 
-  
-  const query = args.join(' ');
-  await conn.reply(m.chat, `🔎 *Buscando "${query}" para ti, ${name}-chan...*`, m, { contextInfo });
+  await m.react("🕝");
 
-  const search = await yts(query);
-  const video  = search.videos?.[0];
-  if (!video) {
-    return conn.reply(m.chat, `😿 Lo siento ${name}-chan, no encontré nada con "${query}".`, m, { contextInfo });
+  const search = await yts(text);
+  if (!search?.all || search.all.length === 0) {
+    return conn.reply(m.chat, `💦 *Gomen ne, no encontré nada con:* "${text}"`, m, { contextInfo });
   }
 
-  
-  const buttons = [
-    { buttonId: `${usedPrefix}play audio ${video.url}`, buttonText: { displayText: '🎵 Audio' }, type: 1 },
-    { buttonId: `${usedPrefix}play video ${video.url}`, buttonText: { displayText: '📹 Vídeo' }, type: 1 }
-  ];
+  const video = search.all[0];
 
-  
-  const caption = 
-`╭─ꨪᰰ━۪  ࣪ ꨶ ╼ׄ ╼࡙֟፝͝⌒࣪᷼⏜ׅ 🍵᮫໋⃨𝆬 ࣪ ⏜ׄ᷼⌒╼࡙֟፝͝ ╾ 
+  const caption = `
+╭─ꨪᰰ━۪  ࣪  ꨶ ╼ׄ ╼࡙֟፝͝⌒࣪᷼⏜ׅ ࣪🍵᮫໋⃨𝆬 ࣪ ׅ⏜ׄ᷼⌒╼࡙֟፝͝ ╾ 
+ 𝆡𑘴⃞ֵ݄݁ׄ🫖ׄׄ ⃨֟፝★̫᤺.݁ׄ⋆⃨݁ 𝐏𝕝𝕒𝕪 𝕗𝕠𝕣 𝕪𝕠𝕦, 𝐨𝕟𝕚𝕚-𝕔𝕙𝕒𝕟~🌸
+     ╰─ꨪᰰ━۪  ࣪  ꨶ ╼ׄ ╼࡙֟፝͝⌒࣪᷼⏜ׅ ࣪🍵᮫໋⃨𝆬 ࣪ ׅ⏜ׄ᷼⌒╼࡙֟፝͝ ╾  
+╭─ꨪᰰ━۪  ࣪ ꨶ ╼ׄ ╼࡙֟፝͝⌒࣪᷼⏜ׅ 🍵᮫໋⃨𝆬 ࣪ ⏜ׄ᷼⌒╼࡙֟፝͝ ╾ 
 > 𑁯᧙  🍓 *Título:* ${video.title}
-> 𑁯᧙  📏 *Duración:* ${video.timestamp}
+> 𑁯᧙  📏 *Duración:* ${video.duration.timestamp}
 > 𑁯᧙  👁️ *Vistas:*  ${video.views.toLocaleString()}
 > 𑁯᧙  🎨 *Autor:* ${video.author.name}
-> 𑁯᧙  🕰️ *Publicado:* ${video.ago}
-> 𑁯᧙  📝 *vídeo url:* ${video.url}
+> 𑁯᧙  📝 *Vídeo url:* ${video.url}
 ╰─ꨪᰰ━۪  ࣪ ꨶ ╼ׄ ╼࡙֟፝͝⌒࣪᷼⏜ׅ 🍵᮫໋⃨𝆬 ࣪ ⏜ׄ᷼⌒╼࡙֟፝͝ ╾
-💌 Arigatou por usarme, siempre estaré aquí para ti~ ✨`;
+💌 Arigatou por usarme, siempre estaré aquí para ti~ ✨`.trim();
 
-  await conn.sendMessage(
-    m.chat,
-    {
-      image: { url: video.thumbnail },
-      caption,
-      footer: 'Elige Audio o Vídeo ↓',
-      buttons,
-      headerType: 4
-    },
-    { quoted: m, contextInfo }
-  );
+  await conn.sendMessage(m.chat, {
+    image: { url: video.thumbnail },
+    caption,
+    contextInfo
+  }, { quoted: m });
+
+  const apiBase = "https://api.stellarwa.xyz/dow";
+
+  try {
+    if (command === "play") {
+      const resAudio = await fetch(`${apiBase}/ytmp3?url=${encodeURIComponent(video.url)}`);
+      const json = await resAudio.json();
+
+      if (!json.status || !json.data?.dl) {
+        const cause = json.message || "No se pudo descargar el audio.";
+        return conn.reply(m.chat, `❌ Error de audio:\n📛 *Causa:* ${cause}`, m, { contextInfo });
+      }
+
+      await conn.sendMessage(m.chat, {
+        audio: { url: json.data.dl },
+        mimetype: "audio/mpeg",
+        fileName: json.data.title + ".mp3",
+        ptt: false
+      }, { quoted: m });
+
+      await m.react("🎶");
+
+    } else if (command === "play2" || command === "playvid") {
+      const resVideo = await fetch(`${apiBase}/ytmp4?url=${encodeURIComponent(video.url)}`);
+      const json = await resVideo.json();
+
+      if (!json.status || !json.data?.dl) {
+        const cause = json.message || "No se pudo descargar el video.";
+        return conn.reply(m.chat, `❌ Error de video:\n📛 *Causa:* ${cause}`, m, { contextInfo });
+      }
+
+      const head = await fetch(json.data.dl, { method: "HEAD" });
+      const sizeMB = parseInt(head.headers.get("content-length") || "0") / (1024 * 1024);
+      const asDocument = sizeMB > SIZE_LIMIT_MB;
+
+      await conn.sendMessage(m.chat, {
+        video: { url: json.data.dl },
+        caption: `🎥 *Listo ${name}-chan!* Aquí está tu video~`,
+        fileName: json.data.title + ".mp4",
+        mimetype: "video/mp4"
+      }, {
+        quoted: m,
+        ...(asDocument ? { asDocument: true } : {})
+      });
+
+      await m.react("📽️");
+    }
+  } catch (e) {
+    console.error(e);
+    return conn.reply(m.chat, `❌ Error inesperado:\n\`\`\`${e.message}\`\`\``, m, { contextInfo });
+  }
 };
 
-handler.help = ['play'].map(v => v + ' <texto>');
-handler.tags = ['descargas'];
-handler.command = ['play'];
+handler.help = ["play", "play2", "playvid"];
+handler.tags = ["descargas"];
+handler.command = ["play", "play2", "playvid"];
 handler.register = true;
+handler.limit = true;
 
 export default handler;
