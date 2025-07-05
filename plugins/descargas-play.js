@@ -60,28 +60,27 @@ const handler = async (m, { conn, text, command }) => {
     contextInfo
   }, { quoted: m });
 
-  const apiBase = "https://api.stellarwa.xyz/dow";
-
   try {
     if (command === "play") {
-      const resAudio = await fetch(`${apiBase}/ytmp3?url=${encodeURIComponent(video.url)}`);
+      const resAudio = await fetch(`https://api.vreden.my.id/api/ytplaymp3?query=${encodeURIComponent(video.title)}`);
       const json = await resAudio.json();
 
-      if (!json.status || !json.data?.dl) {
+      if (!json.status || !json.result?.download?.url) {
         const cause = json.message || "No se pudo descargar el audio.";
         return conn.reply(m.chat, `❌ Error de audio:\n📛 *Causa:* ${cause}`, m, { contextInfo });
       }
 
       await conn.sendMessage(m.chat, {
-        audio: { url: json.data.dl },
+        audio: { url: json.result.download.url },
         mimetype: "audio/mpeg",
-        fileName: json.data.title + ".mp3",
+        fileName: json.result.download.filename || `${video.title}.mp3`,
         ptt: false
       }, { quoted: m });
 
       await m.react("🎶");
 
     } else if (command === "play2" || command === "playvid") {
+      const apiBase = "https://api.stellarwa.xyz/dow";
       const resVideo = await fetch(`${apiBase}/ytmp4?url=${encodeURIComponent(video.url)}`);
       const json = await resVideo.json();
 
